@@ -25,7 +25,7 @@ struct GenerativeView: View {
         case .unavailable(.modelNotReady):
             // The model isn't ready because it's downloading or because of other system reasons.
             Text("unavailable(.modelNotReady)")
-        case .unavailable(let other):
+        case .unavailable:
             // The model is unavailable for an unknown reason.
             Text("unavailable(let other)")
         }

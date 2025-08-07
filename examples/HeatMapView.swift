@@ -25,13 +25,15 @@ struct HeatMapDemoView: View {
             return DayActivity(date: date, count: Int.random(in: 5...20))
         }
 
-        let fullData = generateHeatmapData(existingData: existing)
-        HeatMapView(data: fullData)
+        let fullData = generateHeatmapData(existingData: existing, columns: 7, rows: 7)
+        HeatMapView(data: fullData, columns: 7, rows: 7)
     }
 }
 
 struct HeatMapView: View {
     let data: [DayActivity]
+    let columns: Int
+    let rows: Int
 
     private func color(for count: Int) -> Color {
         switch count {
@@ -45,10 +47,10 @@ struct HeatMapView: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            ForEach(0..<7, id: \.self) { column in
+            ForEach(0..<columns, id: \.self) { column in
                 VStack(spacing: 4) {
-                    ForEach(0..<7, id: \.self) { row in
-                        let index = column * 7 + row
+                    ForEach(0..<rows, id: \.self) { row in
+                        let index = column * rows + row
                         if index < data.count {
                             let day = data[index]
                             Rectangle()
@@ -64,7 +66,7 @@ struct HeatMapView: View {
     }
 }
 
-func generateHeatmapData(existingData: [DayActivity]) -> [DayActivity] {
+func generateHeatmapData(existingData: [DayActivity], columns: Int, rows: Int) -> [DayActivity] {
     guard let firstDate = existingData.first?.date,
         let lastDate = existingData.last?.date
     else {
@@ -94,6 +96,8 @@ func generateHeatmapData(existingData: [DayActivity]) -> [DayActivity] {
         return []
     }
 
+    let total = columns * rows
+
     var result: [DayActivity] = []
 
     // 👉 补前面的占位（直到 existingData.first 之前）
@@ -106,22 +110,22 @@ func generateHeatmapData(existingData: [DayActivity]) -> [DayActivity] {
     // 👉 添加已有数据
     result.append(contentsOf: existingData)
 
-    // 👉 补后面的占位（直到本周结束，但最多总共 49 个）
+    // 👉 补后面的占位（直到本周结束，但最多总共 total 个）
     current = calendar.date(byAdding: .day, value: 1, to: lastDate)!
-    while result.count < 49 && current < endOfWeek {
+    while result.count < total && current < endOfWeek {
         result.append(DayActivity(date: current, count: 0))
         current = calendar.date(byAdding: .day, value: 1, to: current)!
     }
 
-    // 👉 若仍不足 49 个，再补（跨下周，但不推荐这样）
-    while result.count < 49 {
+    // 👉 若仍不足 total 个，再补（跨下周，但不推荐这样）
+    while result.count < total {
         result.append(DayActivity(date: current, count: 0))
         current = calendar.date(byAdding: .day, value: 1, to: current)!
     }
 
-    // 👉 若多于 49，裁剪尾部
-    if result.count > 49 {
-        result = Array(result.suffix(49))
+    // 👉 若多于 total，裁剪尾部
+    if result.count > total {
+        result = Array(result.suffix(total))
     }
 
     return result
@@ -138,6 +142,6 @@ func generateHeatmapData(existingData: [DayActivity]) -> [DayActivity] {
         return DayActivity(date: date, count: Int.random(in: 5...20))
     }
 
-    let fullData = generateHeatmapData(existingData: existing)
-    HeatMapView(data: fullData)
+    let fullData = generateHeatmapData(existingData: existing, columns: 7, rows: 7)
+    HeatMapView(data: fullData, columns: 8, rows: 7)
 }

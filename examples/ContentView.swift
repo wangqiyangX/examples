@@ -12,6 +12,7 @@ enum ExampleList: String, CaseIterable, Identifiable {
         case imageTranslate
     #elseif os(iOS)
         case dualSlider
+        case headphoneManager
     #endif
     case heatMap
 
@@ -25,6 +26,8 @@ enum ExampleList: String, CaseIterable, Identifiable {
         #elseif os(iOS)
             case .dualSlider:
                 "DualSlider"
+            case .headphoneManager:
+                "Headphone Manager"
         #endif
         case .heatMap:
             "HeatMap"
@@ -40,6 +43,8 @@ enum ExampleList: String, CaseIterable, Identifiable {
         #elseif os(iOS)
             case .dualSlider:
                 DualSliderDemoView()
+            case .headphoneManager:
+                HeadphoneManagerView()
         #endif
         case .heatMap:
             HeatMapDemoView()
