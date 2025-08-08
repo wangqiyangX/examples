@@ -12,7 +12,24 @@
       }
     },
     "Accuracy" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "准确性"
+          }
+        }
+      }
+    },
+    "Activity" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "活动"
+          }
+        }
+      }
     },
     "Activity Type" : {
       "localizations" : {
@@ -35,10 +52,27 @@
       }
     },
     "Automotive" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "汽车"
+          }
+        }
+      }
     },
     "available" : {
 
+    },
+    "Connected" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已连接"
+          }
+        }
+      }
     },
     "Cycling" : {
       "localizations" : {
@@ -50,12 +84,52 @@
         }
       }
     },
+    "Data" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据"
+          }
+        }
+      }
+    },
+    "Default" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认"
+          }
+        }
+      }
+    },
+    "Demo" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "演示"
+          }
+        }
+      }
+    },
+    "DualSlider" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "范围选择器"
+          }
+        }
+      }
+    },
     "Enable Activity Monitoring" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "启用设备活动监听"
+            "value" : "启用活动监听"
           }
         }
       }
@@ -65,7 +139,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "启用设备移动监听"
+            "value" : "启用动作监听"
           }
         }
       }
@@ -90,12 +164,12 @@
         }
       }
     },
-    "Headphone Activity" : {
+    "Heading" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "耳机活动"
+            "value" : "方向角"
           }
         }
       }
@@ -110,6 +184,16 @@
         }
       }
     },
+    "Headphone Left" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "左耳机"
+          }
+        }
+      }
+    },
     "Headphone Manager" : {
       "localizations" : {
         "zh-Hans" : {
@@ -120,28 +204,85 @@
         }
       }
     },
-    "Headphone Motion" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "耳机移动"
-          }
-        }
-      }
-    },
     "Headphone Motion not Available" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "耳机移动监听不可用"
+            "value" : "耳机动作监听不可用"
+          }
+        }
+      }
+    },
+    "Headphone Right" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "右耳机"
+          }
+        }
+      }
+    },
+    "High" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高"
+          }
+        }
+      }
+    },
+    "Low" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "低"
           }
         }
       }
     },
     "Magnetic Field" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "磁场"
+          }
+        }
+      }
+    },
+    "Medium" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中"
+          }
+        }
+      }
+    },
+    "Motion" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "动作"
+          }
+        }
+      }
+    },
+    "Not connected" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未连接"
+          }
+        }
+      }
     },
     "Other moving" : {
       "localizations" : {
@@ -156,8 +297,18 @@
     "Progress" : {
 
     },
-    "Rotation Rate" : {
+    "Reality View Demo" : {
 
+    },
+    "Rotation Rate" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "旋转速率"
+          }
+        }
+      }
     },
     "Running" : {
       "localizations" : {
@@ -165,6 +316,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "跑步中"
+          }
+        }
+      }
+    },
+    "Sensor Location" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "传感器位置"
           }
         }
       }
@@ -188,6 +349,9 @@
           }
         }
       }
+    },
+    "This device does not support Wi-Fi Aware" : {
+
     },
     "Time" : {
       "localizations" : {
@@ -221,6 +385,16 @@
     "unavailable(let other)" : {
 
     },
+    "Uncalibrated" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未校准"
+          }
+        }
+      }
+    },
     "Unknown" : {
       "localizations" : {
         "zh-Hans" : {
@@ -232,7 +406,14 @@
       }
     },
     "User Acceleration" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户加速度"
+          }
+        }
+      }
     },
     "Walking" : {
       "localizations" : {
@@ -244,7 +425,10 @@
         }
       }
     },
-    "X" : {
+    "Wi-Fi Aware Sample" : {
+
+    },
+    "X-axis" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -254,7 +438,7 @@
         }
       }
     },
-    "Y" : {
+    "Y-axis" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -264,7 +448,7 @@
         }
       }
     },
-    "Z" : {
+    "Z-axis" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

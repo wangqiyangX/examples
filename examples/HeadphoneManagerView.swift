@@ -13,11 +13,11 @@ extension CMHeadphoneActivityManager.Status {
     var display: String {
         switch self {
         case .disconnected:
-            "Not connected"
+            String(localized: "Not connected")
         case .connected:
-            "Connected"
+            String(localized: "Connected")
         @unknown default:
-            "Unknown"
+            String(localized: "Unknown")
         }
     }
 }
@@ -50,16 +50,55 @@ extension CMMagneticFieldCalibrationAccuracy {
     var display: String {
         switch self {
         case .uncalibrated:
-            "Uncalibrated"
+            String(localized: "Uncalibrated")
         case .low:
-            "Low"
+            String(localized: "Low")
         case .medium:
-            "Medium"
+            String(localized: "Medium")
         case .high:
-            "High"
+            String(localized: "High")
         @unknown default:
-            "Unknown"
+            String(localized: "Unknown")
         }
+    }
+}
+
+extension CMDeviceMotion.SensorLocation {
+    var display: String {
+        switch self {
+        case .default:
+            String(localized: "Default")
+        case .headphoneLeft:
+            String(localized: "Headphone Left")
+        case .headphoneRight:
+            String(localized: "Headphone Right")
+        @unknown default:
+            String(localized: "Unknown")
+        }
+    }
+}
+
+class UnitMagneticField: Dimension, @unchecked Sendable {
+    // 定义基本单位（特斯拉）
+    static let tesla = UnitMagneticField(
+        symbol: "T",
+        converter: UnitConverterLinear(coefficient: 1.0)
+    )
+    static let millitesla = UnitMagneticField(
+        symbol: "mT",
+        converter: UnitConverterLinear(coefficient: 1e-3)
+    )
+    static let microtesla = UnitMagneticField(
+        symbol: "μT",
+        converter: UnitConverterLinear(coefficient: 1e-6)
+    )
+    static let gauss = UnitMagneticField(
+        symbol: "G",
+        converter: UnitConverterLinear(coefficient: 1e-4)
+    )
+
+    override class func baseUnit() -> Self {
+        self.tesla as! Self
     }
 }
 
@@ -182,41 +221,41 @@ enum ListContentType: CaseIterable, Identifiable {
     var displayName: String {
         switch self {
         case .demo:
-            "Demo"
+            String(localized: "Demo")
         case .data:
-            "Data"
+            String(localized: "Data")
         }
     }
 }
 
 struct HeadphoneManagerView: View {
     @State private var viewModel = HeadphoneManagerViewModel()
-    @State private var selectedListType: ListContentType = .demo
+    @State private var selectedListType: ListContentType = .data
 
     var body: some View {
         List {
-            Section("Headphone Activity") {
-                Toggle(
-                    "Enable Activity Monitoring",
-                    isOn: $viewModel.isEnabledActivity
-                )
-                if viewModel.isEnabledActivity
-                    && viewModel.headphoneActivityManager.isActivityAvailable
-                {
-                    LabeledContent(
-                        "Status",
-                        value: viewModel.deviceStatus.display
+            Section("Activity") {
+                if viewModel.headphoneActivityManager.isActivityAvailable {
+                    Toggle(
+                        "Enable Activity Monitoring",
+                        isOn: $viewModel.isEnabledActivity
                     )
-                    if let activity = viewModel.deviceActivity {
+                    if viewModel.isEnabledActivity {
                         LabeledContent(
-                            "Activity Type",
-                            value: activity.deviceActivityType
+                            "Status",
+                            value: viewModel.deviceStatus.display
                         )
+                        if let activity = viewModel.deviceActivity {
+                            LabeledContent(
+                                "Activity Type",
+                                value: activity.deviceActivityType
+                            )
+                        }
                     }
                 } else {
                     ContentUnavailableView(
                         "Headphone Activity not Available",
-                        systemImage: "xmark"
+                        systemImage: "exclamationmark.circle"
                     )
                 }
             }
@@ -252,7 +291,7 @@ struct HeadphoneManagerView: View {
                     }
                     if viewModel.isEnabledMotion && selectedListType == .data {
                         if let motion = viewModel.deviceMotion {
-                            DisclosureGroup {
+                            DisclosureGroup("Attitude") {
                                 LabeledContent(
                                     "Roll",
                                     value: motion.attitude.roll,
@@ -268,56 +307,50 @@ struct HeadphoneManagerView: View {
                                     value: motion.attitude.yaw,
                                     format: .number
                                 )
-                            } label: {
-                                Text("Attitude")
                             }
-                            DisclosureGroup {
+                            DisclosureGroup("Rotation Rate") {
                                 LabeledContent(
-                                    "X",
+                                    "X-axis",
                                     value: motion.rotationRate.x,
                                     format: .number
                                 )
                                 LabeledContent(
-                                    "Y",
+                                    "Y-axis",
                                     value: motion.rotationRate.y,
                                     format: .number
                                 )
                                 LabeledContent(
-                                    "Z",
+                                    "Z-axis",
                                     value: motion.rotationRate.z,
                                     format: .number
                                 )
-                            } label: {
-                                Text("Rotation Rate")
                             }
-                            DisclosureGroup {
+                            DisclosureGroup("Gravity") {
                                 LabeledContent(
-                                    "X",
+                                    "X-axis",
                                     value: Measurement(
                                         value: motion.gravity.x,
                                         unit: UnitAcceleration.gravity
                                     ).formatted()
                                 )
                                 LabeledContent(
-                                    "Y",
+                                    "Y-axis",
                                     value: Measurement(
                                         value: motion.gravity.y,
                                         unit: UnitAcceleration.gravity
                                     ).formatted()
                                 )
                                 LabeledContent(
-                                    "Z",
+                                    "Z-axis",
                                     value: Measurement(
                                         value: motion.gravity.z,
                                         unit: UnitAcceleration.gravity
                                     ).formatted()
                                 )
-                            } label: {
-                                Text("Gravity")
                             }
                             DisclosureGroup("User Acceleration") {
                                 LabeledContent(
-                                    "X",
+                                    "X-axis",
                                     value: Measurement(
                                         value: motion.userAcceleration.x,
                                         unit: UnitAcceleration
@@ -325,7 +358,7 @@ struct HeadphoneManagerView: View {
                                     ).formatted()
                                 )
                                 LabeledContent(
-                                    "Y",
+                                    "Y-axis",
                                     value: Measurement(
                                         value: motion.userAcceleration.y,
                                         unit: UnitAcceleration
@@ -333,7 +366,7 @@ struct HeadphoneManagerView: View {
                                     ).formatted()
                                 )
                                 LabeledContent(
-                                    "Z",
+                                    "Z-axis",
                                     value: Measurement(
                                         value: motion.userAcceleration.z,
                                         unit: UnitAcceleration
@@ -343,36 +376,58 @@ struct HeadphoneManagerView: View {
                             }
                             DisclosureGroup("Magnetic Field") {
                                 LabeledContent(
-                                    "X",
+                                    "X-axis",
+                                    value: Measurement(
+                                        value: motion.magneticField.field.x,
+                                        unit: UnitMagneticField.microtesla
+                                    ).formatted()
+                                )
+                                LabeledContent(
+                                    "X-axis",
                                     value: motion.magneticField.field.x,
                                     format: .number
                                 )
                                 LabeledContent(
-                                    "Y",
-                                    value: motion.magneticField.field.y,
-                                    format: .number
+                                    "Y-axis",
+                                    value: Measurement(
+                                        value: motion.magneticField.field.y,
+                                        unit: UnitMagneticField.microtesla
+                                    ).formatted()
                                 )
                                 LabeledContent(
-                                    "X",
-                                    value: motion.magneticField.field.z,
-                                    format: .number
+                                    "Z-axis",
+                                    value: Measurement(
+                                        value: motion.magneticField.field.z,
+                                        unit: UnitMagneticField.microtesla
+                                    ).formatted()
                                 )
                                 LabeledContent(
                                     "Accuracy",
                                     value: motion.magneticField.accuracy.display
                                 )
                             }
+                            LabeledContent(
+                                "Heading",
+                                value: Measurement(
+                                    value: motion.heading,
+                                    unit: UnitAngle.degrees
+                                ).formatted()
+                            )
+                            LabeledContent(
+                                "Sensor Location",
+                                value: motion.sensorLocation.display
+                            )
                         }
                     }
                 } else {
                     ContentUnavailableView(
                         "Headphone Motion not Available",
-                        systemImage: "xmark"
+                        systemImage: "exclamationmark.circle"
                     )
                 }
             } header: {
                 HStack {
-                    Text("Headphone Motion")
+                    Text("Motion")
                     Spacer()
                     Picker("Type", selection: $selectedListType) {
                         ForEach(ListContentType.allCases) { type in
