@@ -1,0 +1,279 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "(%@, %@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "(%1$@, %2$@)"
+          }
+        }
+      }
+    },
+    "Accuracy" : {
+
+    },
+    "Activity Type" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "活动类型"
+          }
+        }
+      }
+    },
+    "Attitude" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "姿态"
+          }
+        }
+      }
+    },
+    "Automotive" : {
+
+    },
+    "available" : {
+
+    },
+    "Cycling" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "骑行"
+          }
+        }
+      }
+    },
+    "Enable Activity Monitoring" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用设备活动监听"
+          }
+        }
+      }
+    },
+    "Enable Motion Monitoring" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用设备移动监听"
+          }
+        }
+      }
+    },
+    "Examples" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "示例"
+          }
+        }
+      }
+    },
+    "Gravity" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重力"
+          }
+        }
+      }
+    },
+    "Headphone Activity" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耳机活动"
+          }
+        }
+      }
+    },
+    "Headphone Activity not Available" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耳机活动监听不可用"
+          }
+        }
+      }
+    },
+    "Headphone Manager" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耳机管理"
+          }
+        }
+      }
+    },
+    "Headphone Motion" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耳机移动"
+          }
+        }
+      }
+    },
+    "Headphone Motion not Available" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "耳机移动监听不可用"
+          }
+        }
+      }
+    },
+    "Magnetic Field" : {
+
+    },
+    "Other moving" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "其他动作"
+          }
+        }
+      }
+    },
+    "Progress" : {
+
+    },
+    "Rotation Rate" : {
+
+    },
+    "Running" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跑步中"
+          }
+        }
+      }
+    },
+    "Stationary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "静止"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间"
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "类型"
+          }
+        }
+      }
+    },
+    "unavailable(.appleIntelligenceNotEnabled)" : {
+
+    },
+    "unavailable(.deviceNotEligible)" : {
+
+    },
+    "unavailable(.modelNotReady)" : {
+
+    },
+    "unavailable(let other)" : {
+
+    },
+    "Unknown" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知动作"
+          }
+        }
+      }
+    },
+    "User Acceleration" : {
+
+    },
+    "Walking" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "步行中"
+          }
+        }
+      }
+    },
+    "X" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "X 轴"
+          }
+        }
+      }
+    },
+    "Y" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Y 轴"
+          }
+        }
+      }
+    },
+    "Z" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z 轴"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

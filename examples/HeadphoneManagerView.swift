@@ -22,15 +22,53 @@ extension CMHeadphoneActivityManager.Status {
     }
 }
 
+extension CMMotionActivity {
+    var deviceActivityType: String {
+        if self.stationary {
+            return String(localized: "Stationary")
+        }
+        if self.walking {
+            return String(localized: "Walking")
+        }
+        if self.running {
+            return String(localized: "Running")
+        }
+        if self.automotive {
+            return String(localized: "Automotive")
+        }
+        if self.cycling {
+            return String(localized: "Cycling")
+        }
+        if self.unknown {
+            return String(localized: "Unknown")
+        }
+        return String(localized: "Other moving")
+    }
+}
+
+extension CMMagneticFieldCalibrationAccuracy {
+    var display: String {
+        switch self {
+        case .uncalibrated:
+            "Uncalibrated"
+        case .low:
+            "Low"
+        case .medium:
+            "Medium"
+        case .high:
+            "High"
+        @unknown default:
+            "Unknown"
+        }
+    }
+}
+
 @Observable
 class HeadphoneManagerViewModel {
     fileprivate var headphoneActivityManager = CMHeadphoneActivityManager()
     fileprivate var headphoneMotionManager = CMHeadphoneMotionManager()
 
-    var activity: String = "Not started"
-    var status: String = "--"
-    var motionData: String = "No motion data"
-
+    var deviceActivity: CMMotionActivity?
     var deviceMotion: CMDeviceMotion?
     var deviceStatus: CMHeadphoneActivityManager.Status = .disconnected
 
@@ -64,7 +102,6 @@ class HeadphoneManagerViewModel {
     private func startUpdatingActivity() {
         guard self.headphoneActivityManager.isActivityAvailable else {
             os_log(.error, "Headphone activity is not available!")
-            activity = "Activity not avilable!"
             return
         }
         self.headphoneActivityManager.startActivityUpdates(
@@ -80,40 +117,12 @@ class HeadphoneManagerViewModel {
                 )
                 return
             }
-            self.activity = self.activityHumanReadableDescription(activity!)
+            self.deviceActivity = activity
         }
     }
 
     private func stopUpdatingActivity() {
         self.headphoneActivityManager.stopActivityUpdates()
-        self.activity = "Not started"
-    }
-
-    private func activityHumanReadableDescription(_ activity: CMMotionActivity)
-        -> String
-    {
-        if activity.unknown {
-            return "Unknown"
-        }
-        if activity.stationary {
-            return "Stationary"
-        }
-        if activity.walking {
-            return "Walking"
-        }
-        if activity.running {
-            return "Running"
-        }
-        if activity.automotive {
-            return "Automotive"
-        }
-        // Check if we're on a platform that supports cycling
-        #if os(iOS) || os(watchOS)
-            if activity.cycling {
-                return "Cycling"
-            }
-        #endif
-        return "Other Moving"
     }
 
     // MARK: - Process Motion
@@ -135,23 +144,11 @@ class HeadphoneManagerViewModel {
                 return
             }
             self.deviceMotion = motion
-
-            if let motion = motion {
-                // Format motion data for display
-                self.motionData = String(
-                    format:
-                        "Roll: %.2f, Pitch: %.2f, Yaw: %.2f",
-                    motion.attitude.roll,
-                    motion.attitude.pitch,
-                    motion.attitude.yaw
-                )
-            }
         }
     }
 
     private func stopUpdatingMotion() {
         self.headphoneMotionManager.stopDeviceMotionUpdates()
-        self.motionData = "No motion data"
     }
 
     // MARK: - Process Status
@@ -171,23 +168,7 @@ class HeadphoneManagerViewModel {
                 )
                 return
             }
-            self.status = self.statusHumanReadableDescription(status)
             self.deviceStatus = status
-        }
-    }
-
-    private func statusHumanReadableDescription(
-        _ status: CMHeadphoneActivityManager.Status
-    )
-        -> String
-    {
-        switch status {
-        case .disconnected:
-            return "Disconnected"
-        case .connected:
-            return "Connected"
-        @unknown default:
-            return "Disconnected"
         }
     }
 }
@@ -215,16 +196,23 @@ struct HeadphoneManagerView: View {
     var body: some View {
         List {
             Section("Headphone Activity") {
-                if viewModel.headphoneActivityManager.isActivityAvailable {
+                Toggle(
+                    "Enable Activity Monitoring",
+                    isOn: $viewModel.isEnabledActivity
+                )
+                if viewModel.isEnabledActivity
+                    && viewModel.headphoneActivityManager.isActivityAvailable
+                {
                     LabeledContent(
                         "Status",
                         value: viewModel.deviceStatus.display
                     )
-
-                    Toggle(
-                        "Enable Activity",
-                        isOn: $viewModel.isEnabledActivity
-                    )
+                    if let activity = viewModel.deviceActivity {
+                        LabeledContent(
+                            "Activity Type",
+                            value: activity.deviceActivityType
+                        )
+                    }
                 } else {
                     ContentUnavailableView(
                         "Headphone Activity not Available",
@@ -234,103 +222,157 @@ struct HeadphoneManagerView: View {
             }
 
             Section {
-                Toggle("Headphone Motion", isOn: $viewModel.isEnabledMotion)
-                if viewModel.isEnabledMotion && selectedListType == .demo {
-                    if let motion = viewModel.deviceMotion {
-                        Image(systemName: "face.smiling.inverse")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            // picth 绕 x 轴旋转，点头
-                            .rotation3DEffect(
-                                .degrees(motion.attitude.pitch * 180),
-                                axis: (x: 1, y: 0, z: 0)
-                            )
-                            // roll 绕 y 轴旋转，摇头
-                            .rotation3DEffect(
-                                .degrees(motion.attitude.roll * 180),
-                                axis: (x: 0, y: 1, z: 0)
-                            )
-                            // yaw 绕 z 轴旋转，歪头
-                            .rotation3DEffect(
-                                .degrees(motion.attitude.yaw * 180),
-                                axis: (x: 0, y: 0, z: 1)
-                            )
-                    }
-                }
-                if viewModel.isEnabledMotion && selectedListType == .data {
-                    if let motion = viewModel.deviceMotion {
-                        DisclosureGroup {
-                            LabeledContent(
-                                "Roll",
-                                value: motion.attitude.roll,
-                                format: .number
-                            )
-                            LabeledContent(
-                                "Pitch",
-                                value: motion.attitude.pitch,
-                                format: .number
-                            )
-                            LabeledContent(
-                                "Yaw",
-                                value: motion.attitude.yaw,
-                                format: .number
-                            )
-                        } label: {
-                            Text("Attitude")
-                        }
-                        DisclosureGroup {
-                            LabeledContent(
-                                "X",
-                                value: motion.rotationRate.x,
-                                format: .number
-                            )
-                            LabeledContent(
-                                "Y",
-                                value: motion.rotationRate.y,
-                                format: .number
-                            )
-                            LabeledContent(
-                                "Z",
-                                value: motion.rotationRate.z,
-                                format: .number
-                            )
-                        } label: {
-                            Text("Rotation Rate")
-                        }
-                        DisclosureGroup {
-                            LabeledContent(
-                                "X",
-                                value: Measurement(
-                                    value: motion.gravity.x,
-                                    unit: UnitAcceleration
-                                        .metersPerSecondSquared
-                                ).formatted()
-                            )
-                            LabeledContent(
-                                "Y",
-                                value: Measurement(
-                                    value: motion.gravity.y,
-                                    unit: UnitAcceleration
-                                        .metersPerSecondSquared
-                                ).formatted()
-                            )
-                            LabeledContent(
-                                "Z",
-                                value: Measurement(
-                                    value: motion.gravity.z,
-                                    unit: UnitAcceleration
-                                        .metersPerSecondSquared
-                                ).formatted()
-                            )
-                        } label: {
-                            Text("Gravity")
+                if viewModel.headphoneMotionManager.isDeviceMotionAvailable {
+                    Toggle(
+                        "Enable Motion Monitoring",
+                        isOn: $viewModel.isEnabledMotion
+                    )
+                    if viewModel.isEnabledMotion && selectedListType == .demo {
+                        if let motion = viewModel.deviceMotion {
+                            Image(systemName: "face.smiling.inverse")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                // picth 绕 x 轴旋转，点头
+                                .rotation3DEffect(
+                                    .degrees(motion.attitude.pitch * 180),
+                                    axis: (x: 1, y: 0, z: 0)
+                                )
+                                // roll 绕 y 轴旋转，摇头
+                                .rotation3DEffect(
+                                    .degrees(motion.attitude.roll * 180),
+                                    axis: (x: 0, y: 1, z: 0)
+                                )
+                                // yaw 绕 z 轴旋转，歪头
+                                .rotation3DEffect(
+                                    .degrees(motion.attitude.yaw * 180),
+                                    axis: (x: 0, y: 0, z: 1)
+                                )
                         }
                     }
+                    if viewModel.isEnabledMotion && selectedListType == .data {
+                        if let motion = viewModel.deviceMotion {
+                            DisclosureGroup {
+                                LabeledContent(
+                                    "Roll",
+                                    value: motion.attitude.roll,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "Pitch",
+                                    value: motion.attitude.pitch,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "Yaw",
+                                    value: motion.attitude.yaw,
+                                    format: .number
+                                )
+                            } label: {
+                                Text("Attitude")
+                            }
+                            DisclosureGroup {
+                                LabeledContent(
+                                    "X",
+                                    value: motion.rotationRate.x,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "Y",
+                                    value: motion.rotationRate.y,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "Z",
+                                    value: motion.rotationRate.z,
+                                    format: .number
+                                )
+                            } label: {
+                                Text("Rotation Rate")
+                            }
+                            DisclosureGroup {
+                                LabeledContent(
+                                    "X",
+                                    value: Measurement(
+                                        value: motion.gravity.x,
+                                        unit: UnitAcceleration.gravity
+                                    ).formatted()
+                                )
+                                LabeledContent(
+                                    "Y",
+                                    value: Measurement(
+                                        value: motion.gravity.y,
+                                        unit: UnitAcceleration.gravity
+                                    ).formatted()
+                                )
+                                LabeledContent(
+                                    "Z",
+                                    value: Measurement(
+                                        value: motion.gravity.z,
+                                        unit: UnitAcceleration.gravity
+                                    ).formatted()
+                                )
+                            } label: {
+                                Text("Gravity")
+                            }
+                            DisclosureGroup("User Acceleration") {
+                                LabeledContent(
+                                    "X",
+                                    value: Measurement(
+                                        value: motion.userAcceleration.x,
+                                        unit: UnitAcceleration
+                                            .metersPerSecondSquared
+                                    ).formatted()
+                                )
+                                LabeledContent(
+                                    "Y",
+                                    value: Measurement(
+                                        value: motion.userAcceleration.y,
+                                        unit: UnitAcceleration
+                                            .metersPerSecondSquared
+                                    ).formatted()
+                                )
+                                LabeledContent(
+                                    "Z",
+                                    value: Measurement(
+                                        value: motion.userAcceleration.z,
+                                        unit: UnitAcceleration
+                                            .metersPerSecondSquared
+                                    ).formatted()
+                                )
+                            }
+                            DisclosureGroup("Magnetic Field") {
+                                LabeledContent(
+                                    "X",
+                                    value: motion.magneticField.field.x,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "Y",
+                                    value: motion.magneticField.field.y,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "X",
+                                    value: motion.magneticField.field.z,
+                                    format: .number
+                                )
+                                LabeledContent(
+                                    "Accuracy",
+                                    value: motion.magneticField.accuracy.display
+                                )
+                            }
+                        }
+                    }
+                } else {
+                    ContentUnavailableView(
+                        "Headphone Motion not Available",
+                        systemImage: "xmark"
+                    )
                 }
             } header: {
                 HStack {
-                    Text("Enable Headphone Motion")
+                    Text("Headphone Motion")
                     Spacer()
                     Picker("Type", selection: $selectedListType) {
                         ForEach(ListContentType.allCases) { type in
