@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FB6873A82E4863890007904F /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6873A72E4863890007904F /* WidgetKit.framework */; };
+		FB6873AA2E4863890007904F /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6873A92E4863890007904F /* SwiftUI.framework */; };
+		FB6873BB2E48638B0007904F /* AlarmKitSampleExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = FB6873A52E4863890007904F /* AlarmKitSampleExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FB0818D92E44168A00C53B55 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,15 +27,53 @@
 			remoteGlobalIDString = FB0818CA2E44168600C53B55;
 			remoteInfo = examples;
 		};
+		FB6873B92E48638B0007904F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FB0818C32E44168600C53B55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FB6873A42E4863890007904F;
+			remoteInfo = AlarmKitSampleExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FB6873BC2E48638B0007904F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FB6873BB2E48638B0007904F /* AlarmKitSampleExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FB0818CB2E44168600C53B55 /* examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0818D82E44168A00C53B55 /* examplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = examplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB0818E22E44168A00C53B55 /* examplesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = examplesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB6873A52E4863890007904F /* AlarmKitSampleExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AlarmKitSampleExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB6873A72E4863890007904F /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		FB6873A92E4863890007904F /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FB6873C02E48638B0007904F /* Exceptions for "AlarmKitSample" folder in "AlarmKitSampleExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FB6873A42E4863890007904F /* AlarmKitSampleExtension */;
+		};
+		FB6874302E488BCB0007904F /* Exceptions for "examples" folder in "AlarmKitSampleExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AlarmKitSampleView.swift,
+			);
+			target = FB6873A42E4863890007904F /* AlarmKitSampleExtension */;
+		};
 		FB7B39072E45D65D004D3A29 /* Exceptions for "examples" folder in "examples" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,6 +88,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				FB7B39072E45D65D004D3A29 /* Exceptions for "examples" folder in "examples" target */,
+				FB6874302E488BCB0007904F /* Exceptions for "examples" folder in "AlarmKitSampleExtension" target */,
 			);
 			path = examples;
 			sourceTree = "<group>";
@@ -56,6 +101,14 @@
 		FB0818E52E44168A00C53B55 /* examplesUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = examplesUITests;
+			sourceTree = "<group>";
+		};
+		FB6873AB2E4863890007904F /* AlarmKitSample */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FB6873C02E48638B0007904F /* Exceptions for "AlarmKitSample" folder in "AlarmKitSampleExtension" target */,
+			);
+			path = AlarmKitSample;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -82,6 +135,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB6873A22E4863890007904F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB6873AA2E4863890007904F /* SwiftUI.framework in Frameworks */,
+				FB6873A82E4863890007904F /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +153,8 @@
 				FB0818CD2E44168600C53B55 /* examples */,
 				FB0818DB2E44168A00C53B55 /* examplesTests */,
 				FB0818E52E44168A00C53B55 /* examplesUITests */,
+				FB6873AB2E4863890007904F /* AlarmKitSample */,
+				FB6873A62E4863890007904F /* Frameworks */,
 				FB0818CC2E44168600C53B55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,8 +165,18 @@
 				FB0818CB2E44168600C53B55 /* examples.app */,
 				FB0818D82E44168A00C53B55 /* examplesTests.xctest */,
 				FB0818E22E44168A00C53B55 /* examplesUITests.xctest */,
+				FB6873A52E4863890007904F /* AlarmKitSampleExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FB6873A62E4863890007904F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB6873A72E4863890007904F /* WidgetKit.framework */,
+				FB6873A92E4863890007904F /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,10 +189,12 @@
 				FB0818C72E44168600C53B55 /* Sources */,
 				FB0818C82E44168600C53B55 /* Frameworks */,
 				FB0818C92E44168600C53B55 /* Resources */,
+				FB6873BC2E48638B0007904F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FB6873BA2E48638B0007904F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				FB0818CD2E44168600C53B55 /* examples */,
@@ -176,6 +252,28 @@
 			productReference = FB0818E22E44168A00C53B55 /* examplesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		FB6873A42E4863890007904F /* AlarmKitSampleExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB6873BF2E48638B0007904F /* Build configuration list for PBXNativeTarget "AlarmKitSampleExtension" */;
+			buildPhases = (
+				FB6873A12E4863890007904F /* Sources */,
+				FB6873A22E4863890007904F /* Frameworks */,
+				FB6873A32E4863890007904F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FB6873AB2E4863890007904F /* AlarmKitSample */,
+			);
+			name = AlarmKitSampleExtension;
+			packageProductDependencies = (
+			);
+			productName = AlarmKitSampleExtension;
+			productReference = FB6873A52E4863890007904F /* AlarmKitSampleExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,6 +295,9 @@
 						CreatedOnToolsVersion = 26.0;
 						TestTargetID = FB0818CA2E44168600C53B55;
 					};
+					FB6873A42E4863890007904F = {
+						CreatedOnToolsVersion = 26.0;
+					};
 				};
 			};
 			buildConfigurationList = FB0818C62E44168600C53B55 /* Build configuration list for PBXProject "examples" */;
@@ -217,6 +318,7 @@
 				FB0818CA2E44168600C53B55 /* examples */,
 				FB0818D72E44168A00C53B55 /* examplesTests */,
 				FB0818E12E44168A00C53B55 /* examplesUITests */,
+				FB6873A42E4863890007904F /* AlarmKitSampleExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -237,6 +339,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FB0818E02E44168A00C53B55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB6873A32E4863890007904F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -267,6 +376,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB6873A12E4863890007904F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -279,6 +395,11 @@
 			isa = PBXTargetDependency;
 			target = FB0818CA2E44168600C53B55 /* examples */;
 			targetProxy = FB0818E32E44168A00C53B55 /* PBXContainerItemProxy */;
+		};
+		FB6873BA2E48638B0007904F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FB6873A42E4863890007904F /* AlarmKitSampleExtension */;
+			targetProxy = FB6873B92E48638B0007904F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -408,6 +529,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = examples/examples.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XN8RD2554;
@@ -427,7 +549,8 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = examples/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = Examples;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Allow Motion Access to Allow AirPod Motion to be registered";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -467,6 +590,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = examples/examples.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3XN8RD2554;
@@ -486,7 +610,8 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = examples/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = Examples;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Allow Motion Access to Allow AirPod Motion to be registered";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -621,6 +746,79 @@
 			};
 			name = Release;
 		};
+		FB6873BD2E48638B0007904F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3XN8RD2554;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlarmKitSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AlarmKitSample;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wangqiyang.examples.AlarmKitSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FB6873BE2E48638B0007904F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3XN8RD2554;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlarmKitSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AlarmKitSample;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wangqiyang.examples.AlarmKitSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -656,6 +854,15 @@
 			buildConfigurations = (
 				FB0818F32E44168A00C53B55 /* Debug */,
 				FB0818F42E44168A00C53B55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB6873BF2E48638B0007904F /* Build configuration list for PBXNativeTarget "AlarmKitSampleExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB6873BD2E48638B0007904F /* Debug */,
+				FB6873BE2E48638B0007904F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

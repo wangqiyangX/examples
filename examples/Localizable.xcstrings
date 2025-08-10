@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "(%@, %@)" : {
       "localizations" : {
         "en" : {
@@ -10,6 +13,12 @@
           }
         }
       }
+    },
+    "%lld" : {
+
+    },
+    "%lld min" : {
+
     },
     "Accuracy" : {
       "localizations" : {
@@ -41,12 +50,65 @@
         }
       }
     },
+    "Add" : {
+
+    },
+    "Add a new alarm by tapping + button." : {
+
+    },
+    "Add Alarm" : {
+
+    },
+    "Alarm" : {
+
+    },
+    "Alarm (Old Session)" : {
+
+    },
+    "alarmID" : {
+
+    },
+    "AlarmKit Sample" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AlarmKit 示例"
+          }
+        }
+      }
+    },
+    "Alerting" : {
+
+    },
     "Attitude" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "姿态"
+          }
+        }
+      }
+    },
+    "Authorization State" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授权状态"
+          }
+        }
+      }
+    },
+    "Authorized" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已授权"
           }
         }
       }
@@ -64,6 +126,12 @@
     "available" : {
 
     },
+    "Cancel" : {
+
+    },
+    "Columns" : {
+
+    },
     "Connected" : {
       "localizations" : {
         "zh-Hans" : {
@@ -73,6 +141,9 @@
           }
         }
       }
+    },
+    "Countdown" : {
+
     },
     "Cycling" : {
       "localizations" : {
@@ -114,7 +185,21 @@
         }
       }
     },
+    "Denied" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已拒绝"
+          }
+        }
+      }
+    },
+    "Done" : {
+
+    },
     "DualSlider" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -143,6 +228,9 @@
           }
         }
       }
+    },
+    "Every %@" : {
+
     },
     "Examples" : {
       "localizations" : {
@@ -234,6 +322,12 @@
         }
       }
     },
+    "Inspector" : {
+
+    },
+    "Label" : {
+
+    },
     "Low" : {
       "localizations" : {
         "zh-Hans" : {
@@ -274,6 +368,9 @@
         }
       }
     },
+    "No Alarms" : {
+
+    },
     "Not connected" : {
       "localizations" : {
         "zh-Hans" : {
@@ -283,6 +380,25 @@
           }
         }
       }
+    },
+    "Not determined" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未决定"
+          }
+        }
+      }
+    },
+    "Open" : {
+
+    },
+    "Open App" : {
+
+    },
+    "Opens the Sample app" : {
+
     },
     "Other moving" : {
       "localizations" : {
@@ -294,10 +410,28 @@
         }
       }
     },
+    "Pause" : {
+
+    },
+    "Pause a countdown" : {
+
+    },
+    "Paused" : {
+
+    },
     "Progress" : {
 
     },
-    "Reality View Demo" : {
+    "Repeat" : {
+
+    },
+    "Repeat a countdown" : {
+
+    },
+    "Resume" : {
+
+    },
+    "Resume a countdown" : {
 
     },
     "Rotation Rate" : {
@@ -310,6 +444,9 @@
         }
       }
     },
+    "Rows" : {
+
+    },
     "Running" : {
       "localizations" : {
         "zh-Hans" : {
@@ -320,6 +457,9 @@
         }
       }
     },
+    "Scheduled" : {
+
+    },
     "Sensor Location" : {
       "localizations" : {
         "zh-Hans" : {
@@ -329,6 +469,12 @@
           }
         }
       }
+    },
+    "Snooze" : {
+
+    },
+    "Start" : {
+
     },
     "Stationary" : {
       "localizations" : {
@@ -350,8 +496,21 @@
         }
       }
     },
-    "This device does not support Wi-Fi Aware" : {
+    "Stop" : {
 
+    },
+    "Stop an alert" : {
+
+    },
+    "This device does not support Wi-Fi Aware" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "该设备不支持 Wi-Fi 感知"
+          }
+        }
+      }
     },
     "Time" : {
       "localizations" : {
@@ -415,6 +574,9 @@
         }
       }
     },
+    "Wake Up" : {
+
+    },
     "Walking" : {
       "localizations" : {
         "zh-Hans" : {
@@ -424,9 +586,6 @@
           }
         }
       }
-    },
-    "Wi-Fi Aware Sample" : {
-
     },
     "X-axis" : {
       "localizations" : {

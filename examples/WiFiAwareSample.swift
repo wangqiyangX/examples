@@ -57,7 +57,7 @@ struct WiFiAwareSampleView: View {
     var body: some View {
         if WACapabilities.supportedFeatures.contains(.wifiAware) {
             List {
-
+ 
             }
         } else {
             ContentUnavailableView {

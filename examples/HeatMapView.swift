@@ -14,19 +14,57 @@ struct DayActivity: Identifiable {
 }
 
 struct HeatMapDemoView: View {
+    @State private var columns: Int = 7
+    @State private var rows: Int = 7
+
+    @State private var showInspector: Bool = false
+
     var body: some View {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
 
         let existing: [DayActivity] = (0..<7).compactMap {
             guard
-                let date = calendar.date(byAdding: .day, value: -6 + $0, to: today)
+                let date = calendar.date(
+                    byAdding: .day,
+                    value: -6 + $0,
+                    to: today
+                )
             else { return nil }
             return DayActivity(date: date, count: Int.random(in: 5...20))
         }
 
-        let fullData = generateHeatmapData(existingData: existing, columns: 7, rows: 7)
-        HeatMapView(data: fullData, columns: 7, rows: 7)
+        let fullData = generateHeatmapData(
+            existingData: existing,
+            columns: 7,
+            rows: 7
+        )
+
+        VStack {
+            HeatMapView(data: fullData, columns: columns, rows: rows)
+        }
+        .toolbar {
+            Button {
+                withAnimation {
+                    showInspector.toggle()
+                }
+            } label: {
+                Label("Inspector", systemImage: "exclamationmark.circle")
+            }
+        }
+        .inspector(isPresented: $showInspector) {
+            Form {
+                Section {
+                    Stepper(value: $columns, in: 4...9) {
+                        Text("Columns")
+                    }
+                    Stepper(value: $rows, in: 4...9) {
+                        Text("Rows")
+                    }
+                }
+            }
+            .presentationDetents([.medium])
+        }
     }
 }
 
@@ -66,7 +104,9 @@ struct HeatMapView: View {
     }
 }
 
-func generateHeatmapData(existingData: [DayActivity], columns: Int, rows: Int) -> [DayActivity] {
+func generateHeatmapData(existingData: [DayActivity], columns: Int, rows: Int)
+    -> [DayActivity]
+{
     guard let firstDate = existingData.first?.date,
         let lastDate = existingData.last?.date
     else {
@@ -132,16 +172,7 @@ func generateHeatmapData(existingData: [DayActivity], columns: Int, rows: Int) -
 }
 
 #Preview {
-    let calendar = Calendar.current
-    let today = calendar.startOfDay(for: Date())
-
-    let existing: [DayActivity] = (0..<7).compactMap {
-        guard
-            let date = calendar.date(byAdding: .day, value: -6 + $0, to: today)
-        else { return nil }
-        return DayActivity(date: date, count: Int.random(in: 5...20))
+    NavigationStack {
+        HeatMapDemoView()
     }
-
-    let fullData = generateHeatmapData(existingData: existing, columns: 7, rows: 7)
-    HeatMapView(data: fullData, columns: 8, rows: 7)
 }

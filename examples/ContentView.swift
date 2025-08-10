@@ -8,53 +8,40 @@
 import SwiftUI
 
 enum ExampleList: String, CaseIterable, Identifiable {
+    case headphoneManager = "Headphone Manager"
     #if os(macOS)
-        case imageTranslate
+        case imageTranslate = "Image Translate"
     #elseif os(iOS)
-        case dualSlider
-        case headphoneManager
-        case realityViewDemo
-        case wifiAwareSample
+        case dualSlider = "DualSlider"
+        case realityViewDemo = "Reality View Sample"
+        case wifiAwareSample = "Wi-Fi Aware Sample"
+        case alarmkitSample = "AlarmKit Sample"
     #endif
     case heatMap
 
     var id: Self { self }
 
-    var display: String {
-        switch self {
-        #if os(macOS)
-            case .imageTranslate:
-                String(localized: "Image Translate")
-        #elseif os(iOS)
-            case .dualSlider:
-                String(localized: "DualSlider")
-            case .headphoneManager:
-                String(localized: "Headphone Manager")
-            case .realityViewDemo:
-                String(localized: "Reality View Demo")
-            case .wifiAwareSample:
-                String(localized: "Wi-Fi Aware Sample")
-        #endif
-        case .heatMap:
-            "HeatMap"
-        }
+    var display: LocalizedStringResource {
+        LocalizedStringResource(stringLiteral: self.rawValue)
     }
 
     @ViewBuilder
     var itemView: some View {
         switch self {
+        case .headphoneManager:
+            HeadphoneManagerView()
         #if os(macOS)
             case .imageTranslate:
                 ImageTranslateView()
         #elseif os(iOS)
             case .dualSlider:
                 DualSliderDemoView()
-            case .headphoneManager:
-                HeadphoneManagerView()
             case .realityViewDemo:
                 RealityViewDemo()
             case .wifiAwareSample:
                 WiFiAwareSampleView()
+            case .alarmkitSample:
+                AlarmKitSampleView()
         #endif
         case .heatMap:
             HeatMapDemoView()
