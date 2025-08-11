@@ -85,3 +85,4 @@ fastlane/*.env
 
 iOSInjectionProject/
 .DS_Store
+*.cer

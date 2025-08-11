@@ -9,6 +9,7 @@ import SwiftUI
 
 enum ExampleList: String, CaseIterable, Identifiable {
     case headphoneManager = "Headphone Manager"
+    case storeKitSample = "StoreKit Sample"
     #if os(macOS)
         case imageTranslate = "Image Translate"
     #elseif os(iOS)
@@ -30,6 +31,8 @@ enum ExampleList: String, CaseIterable, Identifiable {
         switch self {
         case .headphoneManager:
             HeadphoneManagerView()
+        case .storeKitSample:
+            StoreKitSampleView()
         #if os(macOS)
             case .imageTranslate:
                 ImageTranslateView()

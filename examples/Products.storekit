@@ -1,0 +1,177 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "22F64B33",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "7323B6A6",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Americano",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "",
+          "displayName" : "美式咖啡",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "consumable_americano",
+      "referenceName" : "Americano",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "2370EEE2",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Latte",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "",
+          "displayName" : "拿铁",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "consumable_latte",
+      "referenceName" : "Latte",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "5F51280C",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Pour-over",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "",
+          "displayName" : "手冲咖啡",
+          "locale" : "zh_Hans"
+        }
+      ],
+      "productID" : "consumable_pour_over",
+      "referenceName" : "Pour-over",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "C3813BBD",
+      "localizations" : [
+
+      ],
+      "name" : "Subscription",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "40C2216B",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "Subscription (Monthly)",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "",
+              "displayName" : "订阅（月度）",
+              "locale" : "zh_Hans"
+            }
+          ],
+          "productID" : "subscription_monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Subscription (Monthly)",
+          "subscriptionGroupID" : "C3813BBD",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "10.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "17CCD866",
+          "introductoryOffer" : {
+            "internalID" : "849EB4DF",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1M"
+          },
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "Subscription (Yearly)",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "订阅（年度）",
+              "displayName" : "Subscription (Yearly)",
+              "locale" : "zh_Hans"
+            }
+          ],
+          "productID" : "subscription_yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Subscription (Yearly)",
+          "subscriptionGroupID" : "C3813BBD",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

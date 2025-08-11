@@ -68,17 +68,6 @@
     "alarmID" : {
 
     },
-    "AlarmKit Sample" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AlarmKit 示例"
-          }
-        }
-      }
-    },
     "Alerting" : {
 
     },
@@ -88,17 +77,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "姿态"
-          }
-        }
-      }
-    },
-    "Authorization State" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "授权状态"
           }
         }
       }
@@ -197,17 +175,6 @@
     },
     "Done" : {
 
-    },
-    "DualSlider" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "范围选择器"
-          }
-        }
-      }
     },
     "Enable Activity Monitoring" : {
       "localizations" : {
@@ -500,6 +467,9 @@
 
     },
     "Stop an alert" : {
+
+    },
+    "Subscriptions" : {
 
     },
     "This device does not support Wi-Fi Aware" : {
