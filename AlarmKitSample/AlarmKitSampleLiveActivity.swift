@@ -28,7 +28,6 @@ struct AlarmKitSampleLiveActivity: Widget {
                     )
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-//                    cookingMethod(metadata: context.attributes.metadata)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     bottomView(
@@ -180,7 +179,7 @@ struct AlarmControls: View {
     var state: AlarmPresentationState
 
     var body: some View {
-        HStack(spacing: 4) {
+        HStack {
             switch state.mode {
             case .countdown:
                 ButtonView(
@@ -192,7 +191,7 @@ struct AlarmControls: View {
                 ButtonView(
                     config: presentation.paused?.resumeButton,
                     intent: ResumeIntent(alarmID: state.alarmID.uuidString),
-                    tint: .orange
+                    tint: .green
                 )
             default:
                 EmptyView()
@@ -201,7 +200,7 @@ struct AlarmControls: View {
             ButtonView(
                 config: presentation.alert.stopButton,
                 intent: StopIntent(alarmID: state.alarmID.uuidString),
-                tint: .red
+                tint: .secondary
             )
         }
     }
@@ -222,10 +221,9 @@ struct ButtonView<I>: View where I: AppIntent {
     var body: some View {
         Button(intent: intent) {
             Label(config.text, systemImage: config.systemImageName)
-                .lineLimit(1)
+                .labelStyle(.iconOnly)
         }
         .tint(tint)
-        .buttonStyle(.borderedProminent)
-        .frame(width: 96, height: 30)
+        .buttonStyle(.glassProminent)
     }
 }

@@ -121,17 +121,6 @@ struct CustomData: AlarmMetadata {
     var createdAt: Date = .now
 }
 
-extension Alarm.Schedule {
-    static var tenSecondsFromNow: Self {
-        let tenSecondsFromNow = Date.now.addingTimeInterval(10)
-        let time = Alarm.Schedule.Relative.Time(
-            hour: Calendar.current.component(.hour, from: tenSecondsFromNow),
-            minute: Calendar.current.component(.minute, from: tenSecondsFromNow)
-        )
-        return .relative(.init(time: time))
-    }
-}
-
 extension Alarm.State {
     var display: String {
         switch self {
@@ -202,7 +191,7 @@ extension AlarmButton {
     static var snoozeButton: Self {
         AlarmButton(
             text: "Snooze",
-            textColor: .black,
+            textColor: .orange,
             systemImageName: "zzz"
         )
     }
@@ -211,7 +200,7 @@ extension AlarmButton {
         AlarmButton(
             text: "Done",
             textColor: .white,
-            systemImageName: "stop.circle"
+            systemImageName: "xmark"
         )
     }
 }
@@ -261,6 +250,14 @@ extension Locale.Weekday {
     }
 }
 
+extension TimeInterval {
+    func customFormatted() -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: self) ?? self.formatted()
+    }
+}
+
 struct AlarmData {
     var id: UUID
     var alarm: Alarm
@@ -294,9 +291,7 @@ class AlarmKitSampleViewModel {
     typealias AlarmsMap = [UUID: (Alarm, LocalizedStringResource)]
 
     @MainActor var alarmDataList: [AlarmData] = []
-    @MainActor var alarmsMap = AlarmsMap()
     @MainActor var hasUpcomingAlerts: Bool {
-        //        !alarmsMap.isEmpty
         !alarmDataList.isEmpty
     }
     @ObservationIgnored let alarmManager = AlarmManager.shared
@@ -316,14 +311,13 @@ class AlarmKitSampleViewModel {
 
     private func updateAlarmState(with remoteAlarms: [Alarm]) {
         Task { @MainActor in
-
-            // Update existing alarm states.
             remoteAlarms.forEach { updated in
                 if let targetID = alarmDataList.firstIndex(where: { data in
                     data.id == updated.id
                 }) {
                     logger.debug("Updated Alarm.")
                     alarmDataList[targetID].alarm = updated
+                    alarmDataList[targetID].enable = true
                 } else {
                     logger.debug("Added Alarm.")
                     alarmDataList.append(
@@ -335,14 +329,7 @@ class AlarmKitSampleViewModel {
                         )
                     )
                 }
-                //                alarmsMap[
-                //                    updated.id,
-                //                    default: (updated, "Alarm (Old Session)")
-                //                ]
-                //                .0 = updated
             }
-            //            let knownAlarmIDs = Set(alarmsMap.keys)
-            //            let incomingAlarmIDs = Set(remoteAlarms.map(\.id))
         }
     }
 
@@ -371,39 +358,15 @@ class AlarmKitSampleViewModel {
         }
     }
 
-    func scheduleAlertOnlyExample() {
-        let alertContent = AlarmPresentation.Alert(
-            title: "Wake Up",
-            stopButton: AlarmButton(
-                text: "Done",
-                textColor: .white,
-                systemImageName: "stop.circle"
-            )
-        )
-        let attributes = AlarmAttributes<CustomData>(
-            presentation: AlarmPresentation(alert: alertContent),
-            tintColor: Color.accentColor
-        )
-
-        let alarmConfiguration = AlarmManager.AlarmConfiguration<CustomData>(
-            schedule: .tenSecondsFromNow,
-            attributes: attributes
-        )
-
-        scheduleAlarm(
-            id: UUID(),
-            label: "Wake Up",
-            alarmConfiguration: alarmConfiguration
-        )
-    }
-
     private func alarmPresentation(with userInput: AlarmForm)
         -> AlarmPresentation
     {
         let secondaryButtonBehavior = userInput.secondaryButtonBehavior
         let secondaryButton: AlarmButton? =
             switch secondaryButtonBehavior {
-            case .countdown: .snoozeButton
+            case .countdown:
+                userInput.selectedAlarmType == .alarm
+                    ? .snoozeButton : .repeatButton
             case .custom: .openAppButton
             default: nil
             }
@@ -447,13 +410,32 @@ class AlarmKitSampleViewModel {
 
         let id = UUID()
 
-        let alarmConfiguration = AlarmConfiguration(
-            countdownDuration: userInput.countdownDuration,
-            schedule: userInput.schedule,
-            attributes: attributes,
-            stopIntent: StopIntent(alarmID: id.uuidString),
-            secondaryIntent: OpenAlarmAppIntent(alarmID: id.uuidString)
-        )
+        var alarmConfiguration: AlarmConfiguration {
+            switch userInput.selectedAlarmType {
+            case .alarm:
+                AlarmConfiguration.alarm(
+                    schedule: userInput.schedule,
+                    attributes: attributes,
+                    stopIntent: StopIntent(alarmID: id.uuidString),
+                    secondaryIntent: OpenAlarmAppIntent(alarmID: id.uuidString),
+                )
+            case .timer:
+                AlarmConfiguration.timer(
+                    duration: userInput.selectedPreAlert.interval,
+                    attributes: attributes,
+                    stopIntent: StopIntent(alarmID: id.uuidString),
+                    secondaryIntent: OpenAlarmAppIntent(alarmID: id.uuidString),
+                )
+            }
+        }
+
+        //        let alarmConfiguration = AlarmConfiguration(
+        //            countdownDuration: userInput.countdownDuration,
+        //            schedule: userInput.schedule,
+        //            attributes: attributes,
+        //            stopIntent: StopIntent(alarmID: id.uuidString),
+        //            secondaryIntent: OpenAlarmAppIntent(alarmID: id.uuidString)
+        //        )
 
         scheduleAlarm(
             id: id,
@@ -477,21 +459,13 @@ class AlarmKitSampleViewModel {
                     configuration: alarmConfiguration
                 )
                 await MainActor.run {
-                    //                    alarmsMap[id] = (alarm, label)
-                    //                    alarmDataList.append(
-                    //                        .init(
-                    //                            id: id,
-                    //                            alarm: alarm,
-                    //                            label: label,
-                    //                            type: .alarm
-                    //                        )
-                    //                    )
                     if let targetID = alarmDataList.firstIndex(where: { data in
                         data.id == id
                     }) {
                         logger.debug("Updated Alarm.")
                         alarmDataList[targetID].alarm = alarm
                         alarmDataList[targetID].label = label
+                        alarmDataList[targetID].enable = true
                     } else {
                         logger.debug("Added Alarm.")
                         alarmDataList.append(
@@ -511,11 +485,7 @@ class AlarmKitSampleViewModel {
     }
 
     func unscheduleAlarm(with alarmID: UUID) {
-        do {
-            try alarmManager.cancel(id: alarmID)
-        } catch {
-            logger.error("\(error.localizedDescription)")
-        }
+        try? alarmManager.cancel(id: alarmID)
     }
 }
 
@@ -576,14 +546,53 @@ struct AlarmKitSampleView: View {
                 .pickerStyle(.segmented)
 
                 Section {
-                    ForEach(viewModel.alarmDataList, id: \.id) { data in
-                        AlarmCellView(alarm: data.alarm, label: data.label)
+                    ForEach($viewModel.alarmDataList, id: \.id) { $data in
+                        LabeledContent {
+                            Toggle(
+                                "",
+                                isOn: $data.enable
+                            )
+                            .labelsHidden()
+                            .onChange(
+                                of: $data.enable.wrappedValue
+                            ) { oldValue, newValue in
+                                if !newValue {
+                                    viewModel.unscheduleAlarm(with: data.id)
+                                }
+                            }
+                        } label: {
+                            Group {
+                                if let alertingTime = data.alarm
+                                    .alertingTime
+                                {
+                                    Text(alertingTime, style: .time)
+                                        .font(.title)
+                                        .bold()
+                                } else if let countdown = data.alarm
+                                    .countdownDuration?.preAlert
+                                {
+                                    Text(countdown.customFormatted())
+                                        .font(.title)
+                                        .bold()
+                                }
+                                HStack {
+                                    Text(data.label)
+                                    Text(data.alarm.state.display)
+                                }
+                            }
+                            .opacity(data.enable ? 1 : 0.5)
+                        }
                     }
                     .onDelete { indexSet in
                         indexSet.forEach { idx in
-                            viewModel.unscheduleAlarm(
-                                with: viewModel.alarmDataList[idx].id
-                            )
+                            viewModel.alarmDataList.remove(at: idx)
+                            //                            if !viewModel.alarmDataList.isEmpty
+                            //                                && viewModel.alarmDataList[idx].enable
+                            //                            {
+                            //                                viewModel.unscheduleAlarm(
+                            //                                    with: viewModel.alarmDataList[idx].id
+                            //                                )
+                            //                            }
                         }
                     }
                 }
@@ -594,30 +603,6 @@ struct AlarmKitSampleView: View {
                 systemImage: "clock.badge.exclamationmark",
                 description: Text("Add a new alarm by tapping + button.")
             )
-        }
-    }
-}
-
-struct AlarmCellView: View {
-    let alarm: Alarm
-    let label: LocalizedStringResource
-
-    @State private var enable: Bool = true
-
-    var body: some View {
-        LabeledContent {
-            Toggle("", isOn: $enable)
-                .labelsHidden()
-        } label: {
-            if let alertingTime = alarm.alertingTime {
-                Text(alertingTime, style: .time)
-                    .font(.title)
-                    .bold()
-            }
-            HStack {
-                Text(label)
-                Text(alarm.state.display)
-            }
         }
     }
 }
