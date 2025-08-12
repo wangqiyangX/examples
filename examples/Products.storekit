@@ -55,7 +55,7 @@
       "type" : "Consumable"
     },
     {
-      "displayPrice" : "0.99",
+      "displayPrice" : "7.99",
       "familyShareable" : false,
       "internalID" : "5F51280C",
       "localizations" : [
@@ -93,9 +93,13 @@
     {
       "id" : "C3813BBD",
       "localizations" : [
-
+        {
+          "description" : "",
+          "displayName" : "选择方案",
+          "locale" : "zh_Hans"
+        }
       ],
-      "name" : "Subscription",
+      "name" : "Choose your plan",
       "subscriptions" : [
         {
           "adHocOffers" : [
@@ -153,8 +157,8 @@
               "locale" : "en_US"
             },
             {
-              "description" : "订阅（年度）",
-              "displayName" : "Subscription (Yearly)",
+              "description" : "",
+              "displayName" : "订阅（年度）",
               "locale" : "zh_Hans"
             }
           ],

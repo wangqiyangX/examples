@@ -68,8 +68,25 @@
     "alarmID" : {
 
     },
+    "AlarmKit Sample" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AlarmKit 示例"
+          }
+        }
+      }
+    },
     "Alerting" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "振铃中"
+          }
+        }
+      }
     },
     "Attitude" : {
       "localizations" : {
@@ -104,11 +121,35 @@
     "available" : {
 
     },
+    "Buy Me a Coffee" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "给我买一杯咖啡"
+          }
+        }
+      }
+    },
     "Cancel" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          }
+        }
+      }
     },
     "Columns" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "列"
+          }
+        }
+      }
     },
     "Connected" : {
       "localizations" : {
@@ -120,8 +161,26 @@
         }
       }
     },
+    "Consumable" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "消耗品"
+          }
+        }
+      }
+    },
     "Countdown" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "倒计时"
+          }
+        }
+      }
     },
     "Cycling" : {
       "localizations" : {
@@ -174,7 +233,24 @@
       }
     },
     "Done" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
+        }
+      }
+    },
+    "DualSlider" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "范围选择器"
+          }
+        }
+      }
     },
     "Enable Activity Monitoring" : {
       "localizations" : {
@@ -279,6 +355,16 @@
         }
       }
     },
+    "HeatMap" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "热力图"
+          }
+        }
+      }
+    },
     "High" : {
       "localizations" : {
         "zh-Hans" : {
@@ -290,10 +376,24 @@
       }
     },
     "Inspector" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检视器"
+          }
+        }
+      }
     },
     "Label" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标签"
+          }
+        }
+      }
     },
     "Low" : {
       "localizations" : {
@@ -336,7 +436,14 @@
       }
     },
     "No Alarms" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无闹钟"
+          }
+        }
+      }
     },
     "Not connected" : {
       "localizations" : {
@@ -378,16 +485,40 @@
       }
     },
     "Pause" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂停"
+          }
+        }
+      }
     },
     "Pause a countdown" : {
 
     },
     "Paused" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已暂停"
+          }
+        }
+      }
     },
     "Progress" : {
 
+    },
+    "Reality View Sample" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RealityKit 示例"
+          }
+        }
+      }
     },
     "Repeat" : {
 
@@ -396,7 +527,14 @@
 
     },
     "Resume" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        }
+      }
     },
     "Resume a countdown" : {
 
@@ -412,7 +550,14 @@
       }
     },
     "Rows" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "行"
+          }
+        }
+      }
     },
     "Running" : {
       "localizations" : {
@@ -425,7 +570,14 @@
       }
     },
     "Scheduled" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已调度"
+          }
+        }
+      }
     },
     "Sensor Location" : {
       "localizations" : {
@@ -438,10 +590,24 @@
       }
     },
     "Snooze" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打盹"
+          }
+        }
+      }
     },
     "Start" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始"
+          }
+        }
+      }
     },
     "Stationary" : {
       "localizations" : {
@@ -469,8 +635,28 @@
     "Stop an alert" : {
 
     },
-    "Subscriptions" : {
+    "StoreKit Sample" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StoreKit 示例"
+          }
+        }
+      }
+    },
+    "Subscription" : {
 
+    },
+    "Subscriptions" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "订阅"
+          }
+        }
+      }
     },
     "This device does not support Wi-Fi Aware" : {
       "localizations" : {
@@ -550,6 +736,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "步行中"
+          }
+        }
+      }
+    },
+    "Wi-Fi Aware Sample" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wi-Fi Aware 示例"
           }
         }
       }

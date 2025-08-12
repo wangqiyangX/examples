@@ -7,23 +7,42 @@
 
 import SwiftUI
 
-enum ExampleList: String, CaseIterable, Identifiable {
-    case headphoneManager = "Headphone Manager"
-    case storeKitSample = "StoreKit Sample"
+enum ExampleList: CaseIterable, Identifiable {
+    case headphoneManager
+    case storeKitSample
     #if os(macOS)
-        case imageTranslate = "Image Translate"
+        case imageTranslate
     #elseif os(iOS)
-        case dualSlider = "DualSlider"
-        case realityViewDemo = "Reality View Sample"
-        case wifiAwareSample = "Wi-Fi Aware Sample"
-        case alarmkitSample = "AlarmKit Sample"
+        case dualSlider
+        case realityViewDemo
+        case wifiAwareSample
+        case alarmkitSample
     #endif
     case heatMap
 
     var id: Self { self }
 
-    var display: LocalizedStringResource {
-        LocalizedStringResource(stringLiteral: self.rawValue)
+    var display: String {
+        switch self {
+        case .headphoneManager:
+            String(localized: "Headphone Manager")
+        case .storeKitSample:
+            String(localized: "StoreKit Sample")
+        #if os(macOS)
+            case .imageTranslate:
+                String(localized: "Image Translate")
+        #endif
+        case .dualSlider:
+            String(localized: "DualSlider")
+        case .realityViewDemo:
+            String(localized: "Reality View Sample")
+        case .wifiAwareSample:
+            String(localized: "Wi-Fi Aware Sample")
+        case .alarmkitSample:
+            String(localized: "AlarmKit Sample")
+        case .heatMap:
+            String(localized: "HeatMap")
+        }
     }
 
     @ViewBuilder
