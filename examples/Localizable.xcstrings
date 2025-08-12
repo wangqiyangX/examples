@@ -51,7 +51,14 @@
       }
     },
     "Add" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加"
+          }
+        }
+      }
     },
     "Add a new alarm by tapping + button." : {
 
@@ -59,14 +66,31 @@
     "Add Alarm" : {
 
     },
+    "Add Todo" : {
+
+    },
     "Alarm" : {
 
     },
     "Alarm (Old Session)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "闹钟（旧会话）"
+          }
+        }
+      }
     },
     "alarmID" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "闹钟 ID"
+          }
+        }
+      }
     },
     "AlarmKit Sample" : {
       "localizations" : {
@@ -88,12 +112,32 @@
         }
       }
     },
+    "Apple ID Credential" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple ID 凭证"
+          }
+        }
+      }
+    },
     "Attitude" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "姿态"
+          }
+        }
+      }
+    },
+    "Authorization Code" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授权码"
           }
         }
       }
@@ -141,6 +185,16 @@
         }
       }
     },
+    "Child" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儿童"
+          }
+        }
+      }
+    },
     "Columns" : {
       "localizations" : {
         "zh-Hans" : {
@@ -161,16 +215,8 @@
         }
       }
     },
-    "Consumable" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "消耗品"
-          }
-        }
-      }
+    "Content" : {
+
     },
     "Countdown" : {
       "localizations" : {
@@ -178,6 +224,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "倒计时"
+          }
+        }
+      }
+    },
+    "Credential State" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "凭证状态"
           }
         }
       }
@@ -252,6 +308,16 @@
         }
       }
     },
+    "Email" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "邮件"
+          }
+        }
+      }
+    },
     "Enable Activity Monitoring" : {
       "localizations" : {
         "zh-Hans" : {
@@ -280,7 +346,17 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "示例"
+            "value" : "示例库"
+          }
+        }
+      }
+    },
+    "Full Name" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全名"
           }
         }
       }
@@ -375,6 +451,16 @@
         }
       }
     },
+    "Identity Token(JWT)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "身份令牌（JWT）"
+          }
+        }
+      }
+    },
     "Inspector" : {
       "localizations" : {
         "zh-Hans" : {
@@ -391,6 +477,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "标签"
+          }
+        }
+      }
+    },
+    "Likely Real" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可能为真人"
           }
         }
       }
@@ -445,6 +541,16 @@
         }
       }
     },
+    "Not Child" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "非儿童"
+          }
+        }
+      }
+    },
     "Not connected" : {
       "localizations" : {
         "zh-Hans" : {
@@ -461,6 +567,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未决定"
+          }
+        }
+      }
+    },
+    "Not Found" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未找到"
           }
         }
       }
@@ -520,8 +636,25 @@
         }
       }
     },
+    "realUserStatus" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "真实用户状态"
+          }
+        }
+      }
+    },
     "Repeat" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重复"
+          }
+        }
+      }
     },
     "Repeat a countdown" : {
 
@@ -538,6 +671,16 @@
     },
     "Resume a countdown" : {
 
+    },
+    "Revoked" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已撤销"
+          }
+        }
+      }
     },
     "Rotation Rate" : {
       "localizations" : {
@@ -589,6 +732,26 @@
         }
       }
     },
+    "SignIn Error" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录错误"
+          }
+        }
+      }
+    },
+    "SignInWithApple Sample" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SignInWithApple 示例"
+          }
+        }
+      }
+    },
     "Snooze" : {
       "localizations" : {
         "zh-Hans" : {
@@ -605,6 +768,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "开始"
+          }
+        }
+      }
+    },
+    "State" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "状态"
           }
         }
       }
@@ -630,7 +803,14 @@
       }
     },
     "Stop" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂停"
+          }
+        }
+      }
     },
     "Stop an alert" : {
 
@@ -646,7 +826,14 @@
       }
     },
     "Subscription" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "订阅"
+          }
+        }
+      }
     },
     "Subscriptions" : {
       "localizations" : {
@@ -657,6 +844,9 @@
           }
         }
       }
+    },
+    "Supabase Sample" : {
+
     },
     "This device does not support Wi-Fi Aware" : {
       "localizations" : {
@@ -674,6 +864,19 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "时间"
+          }
+        }
+      }
+    },
+    "Todos" : {
+
+    },
+    "Transferred" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已迁移"
           }
         }
       }
@@ -720,12 +923,42 @@
         }
       }
     },
+    "Unsupported" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不支持"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户"
+          }
+        }
+      }
+    },
     "User Acceleration" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "用户加速度"
+          }
+        }
+      }
+    },
+    "User Age Range" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "用户年龄范围"
           }
         }
       }

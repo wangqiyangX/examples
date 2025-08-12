@@ -10,6 +10,8 @@ import SwiftUI
 enum ExampleList: CaseIterable, Identifiable {
     case headphoneManager
     case storeKitSample
+    case signInWithAppleSample
+    case supabaseSample
     #if os(macOS)
         case imageTranslate
     #elseif os(iOS)
@@ -28,6 +30,10 @@ enum ExampleList: CaseIterable, Identifiable {
             String(localized: "Headphone Manager")
         case .storeKitSample:
             String(localized: "StoreKit Sample")
+        case .signInWithAppleSample:
+            String(localized: "SignInWithApple Sample")
+        case .supabaseSample:
+            String(localized: "Supabase Sample")
         #if os(macOS)
             case .imageTranslate:
                 String(localized: "Image Translate")
@@ -52,6 +58,10 @@ enum ExampleList: CaseIterable, Identifiable {
             HeadphoneManagerView()
         case .storeKitSample:
             StoreKitSampleView()
+        case .signInWithAppleSample:
+            SignInWithAppleSampleView()
+        case .supabaseSample:
+            SupabaseSampleView()
         #if os(macOS)
             case .imageTranslate:
                 ImageTranslateView()
@@ -85,6 +95,7 @@ struct ContentView: View {
             if let selectedExample {
                 selectedExample.itemView
                     .navigationTitle(selectedExample.display)
+                    .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
