@@ -9,7 +9,7 @@ import PostgREST
 import Supabase
 import SwiftUI
 
-nonisolated struct Todo: Codable {
+nonisolated struct Todo: Codable, Identifiable {
     var id: UUID
     var order: Int
     var content: String
@@ -109,7 +109,8 @@ final class SupabaseSampleViewModel {
 struct SupabaseSampleView: View {
     @State private var viewModel = SupabaseSampleViewModel()
     @State private var showInsertTodo = false
-
+    @FocusState private var focused: Bool
+    
     var body: some View {
         List {
             Section {
@@ -120,29 +121,7 @@ struct SupabaseSampleView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                 } else {
                     ForEach($viewModel.todoList, id: \.id) { $todo in
-                        HStack(alignment: .top) {
-                            Image(
-                                systemName: todo.isComplete
-                                    ? "circle.circle.fill" : "circle"
-                            )
-                            .onTapGesture {
-                                todo.isComplete.toggle()
-                                Task {
-                                    await viewModel.upsertTodo(todo: todo)
-                                }
-                            }
-                            VStack {
-                                Text(todo.content)
-                            }
-                        }
-                        .opacity(todo.isComplete ? 0.65 : 1)
-                        .swipeActions {
-                            Button(role: .destructive) {
-                                Task {
-                                    await viewModel.deleteTodo(todo: todo)
-                                }
-                            }
-                        }
+                        TodoCellView(todo: $todo, focused: $focused)
                     }
                 }
             } header: {
@@ -153,16 +132,72 @@ struct SupabaseSampleView: View {
                 }
             }
         }
+        .environment(viewModel)
         .toolbar {
             Button {
                 showInsertTodo.toggle()
             } label: {
                 Image(systemName: "plus")
             }
+            if focused {
+                Button(role: .confirm) {
+                    withAnimation {
+                        focused = false
+                    }
+                }
+            }
         }
         .sheet(isPresented: $showInsertTodo) {
             AddTodoView()
                 .environment(viewModel)
+        }
+    }
+}
+
+struct TodoCellView: View {
+    @Binding var todo: Todo
+    var focused: FocusState<Bool>.Binding
+    @State private var editing: Bool = false
+
+    @Environment(SupabaseSampleViewModel.self) private var viewModel
+
+    var body: some View {
+        HStack(alignment: .top) {
+            Image(
+                systemName: todo.isComplete
+                    ? "circle.circle.fill" : "circle"
+            )
+            .onTapGesture {
+                todo.isComplete.toggle()
+                Task {
+                    await viewModel.upsertTodo(todo: todo)
+                }
+            }
+            VStack {
+                if editing {
+                    TextField("Content", text: $todo.content)
+                        .focused(focused)
+                        .onSubmit {
+                            Task {
+                                await viewModel.upsertTodo(todo: todo)
+                            }
+                        }
+                } else {
+                    Text(todo.content)
+                }
+            }
+            .onTapGesture {
+                editing = true
+                focused.wrappedValue.toggle()
+            }
+        }
+        .opacity(todo.isComplete ? 0.65 : 1)
+        .swipeActions {
+            Button(role: .destructive) {
+                Task {
+                    await viewModel.deleteTodo(todo: todo)
+                }
+            }
         }
     }
 }
